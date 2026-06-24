@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumé Glow Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+        </head>
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --verde: #2F4A3C;
+            --verde-salvia: #6F7F68;
+            --dorado: #C8A963;
+            --dorado-hover: #b8953d;
+            --beige: #EDE5D6;
+            --beige-claro: #F7F4EB;
+            --blanco: #FFFBF6;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--beige-claro);
+            font-family: 'Montserrat', sans-serif;
+            color: var(--verde);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── NAV ── */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: var(--verde);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            height: 72px;
+        }
+
+        .nav-logo {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+
+        .nav-logo .logo-main {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--blanco);
+            letter-spacing: 4px;
+        }
+
+        .nav-logo .logo-sub {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.58rem;
+            font-weight: 500;
+            letter-spacing: 5px;
+            color: var(--dorado);
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: rgba(255, 251, 246, 0.75);
+            text-decoration: none;
+            transition: color 0.25s;
+        }
+
+        .nav-links a:hover {
+            color: var(--dorado);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .nav-actions a {
+            color: rgba(255, 251, 246, 0.75);
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: color 0.25s;
+        }
+
+        .nav-actions a:hover {
+            color: var(--dorado);
+        }
+
+        .btn-reserva-nav {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--verde) !important;
+            background-color: var(--dorado);
+            padding: 0.6rem 1.4rem;
+            border-radius: 2px;
+            text-decoration: none;
+            transition: background-color 0.25s;
+        }
+
+        .btn-reserva-nav:hover {
+            background-color: var(--dorado-hover);
+            color: var(--verde) !important;
+        }
+
+        /* ── HERO ── */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: calc(100vh - 72px);
+            overflow: hidden;
+        }
+
+        .hero-left {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 6rem 6% 6rem 8%;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--dorado);
+            margin-bottom: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .hero-eyebrow::before {
+            content: '';
+            display: inline-block;
+            width: 32px;
+            height: 1px;
+            background: var(--dorado);
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3.2rem, 5vw, 5.5rem);
+            font-weight: 300;
+            line-height: 1.05;
+            color: var(--verde);
+            margin-bottom: 2rem;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            font-weight: 300;
+            color: var(--verde-salvia);
+        }
+
+        .hero-desc {
+            font-size: 0.9rem;
+            font-weight: 400;
+            line-height: 1.8;
+            color: var(--verde);
+            opacity: 0.75;
+            max-width: 400px;
+            margin-bottom: 3rem;
+        }
+
+        .hero-ctas {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .btn-primary {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--blanco);
+            background-color: var(--verde);
+            padding: 1rem 2.5rem;
+            border-radius: 2px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--dorado);
+            color: var(--verde);
+        }
+
+        .btn-ghost {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            color: var(--verde);
+            opacity: 0.65;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: opacity 0.25s;
+        }
+
+        .btn-ghost:hover {
+            opacity: 1;
+        }
+
+        .btn-ghost span {
+            font-size: 1rem;
+        }
+
+        .hero-right {
+            position: relative;
+            background-color: var(--beige);
+            overflow: hidden;
+        }
+
+        .hero-right img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            mix-blend-mode: multiply;
+        }
+
+        .hero-badge {
+            position: absolute;
+            bottom: 3rem;
+            left: -1.5rem;
+            background-color: var(--blanco);
+            padding: 1.2rem 1.5rem;
+            border-left: 3px solid var(--dorado);
+            box-shadow: 0 8px 30px rgba(47, 74, 60, 0.10);
+        }
+
+        .hero-badge .badge-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--verde);
+            display: block;
+            line-height: 1;
+        }
+
+        .hero-badge .badge-label {
+            font-size: 0.7rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            color: var(--verde-salvia);
+            text-transform: uppercase;
+        }
+
+        /* ── STRIP DE CONFIANZA ── */
+        .trust-strip {
+            background-color: var(--verde);
+            display: flex;
+            justify-content: center;
+            gap: 0;
+        }
+
+        .trust-item {
+            flex: 1;
+            max-width: 300px;
+            padding: 2rem;
+            text-align: center;
+            border-right: 1px solid rgba(255, 251, 246, 0.08);
+        }
+
+        .trust-item:last-child {
+            border-right: none;
+        }
+
+        .trust-item .t-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: var(--dorado);
+            display: block;
+        }
+
+        .trust-item .t-label {
+            font-size: 0.72rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+            color: rgba(255, 251, 246, 0.65);
+        }
+
+        /* ── SERVICIOS DESTACADOS ── */
+        .section-services {
+            padding: 7rem 8%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            font-size: 0.68rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--dorado);
+            margin-bottom: 0.8rem;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 3.5vw, 3rem);
+            font-weight: 300;
+            line-height: 1.15;
+            color: var(--verde);
+        }
+
+        .section-title em {
+            font-style: italic;
+        }
+
+        .link-ver-todos {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--verde);
+            text-decoration: none;
+            opacity: 0.5;
+            white-space: nowrap;
+            transition: opacity 0.25s, color 0.25s;
+            padding-bottom: 2rem;
+        }
+
+        .link-ver-todos:hover {
+            opacity: 1;
+            color: var(--dorado);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5px;
+            background-color: rgba(47, 74, 60, 0.08);
+        }
+
+        .service-card {
+            background-color: var(--beige-claro);
+            padding: 2.5rem 2.2rem;
+            display: flex;
+            flex-direction: column;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            background-color: var(--blanco);
+        }
+
+        .service-card:hover .service-arrow {
+            transform: translateX(4px);
+            opacity: 1;
+        }
+
+        .service-icon {
+            font-size: 1.5rem;
+            margin-bottom: 1.8rem;
+            color: var(--dorado);
+            opacity: 0.85;
+        }
+
+        .service-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.45rem;
+            font-weight: 600;
+            color: var(--verde);
+            margin-bottom: 0.8rem;
+            line-height: 1.2;
+        }
+
+        .service-desc {
+            font-size: 0.8rem;
+            line-height: 1.75;
+            color: var(--verde);
+            opacity: 0.65;
+            margin-bottom: 2rem;
+            flex-grow: 1;
+        }
+
+        .service-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .service-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--dorado);
+        }
+
+        .service-price span {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 400;
+            color: var(--verde-salvia);
+            display: block;
+        }
+
+        .service-arrow {
+            font-size: 1.1rem;
+            color: var(--dorado);
+            opacity: 0.4;
+            transition: transform 0.3s, opacity 0.3s;
+        }
+
+        /* ── RITUAL DESTACADO (BANNER) ── */
+        .ritual-banner {
+            background-color: var(--verde);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        .ritual-img {
+            height: 500px;
+            overflow: hidden;
+        }
+
+        .ritual-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.85);
+        }
+
+        .ritual-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 5rem 7%;
+        }
+
+        .ritual-eyebrow {
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--dorado);
+            margin-bottom: 1.5rem;
+        }
+
+        .ritual-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.2rem, 3.5vw, 3.5rem);
+            font-weight: 300;
+            font-style: italic;
+            color: var(--blanco);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .ritual-desc {
+            font-size: 0.85rem;
+            line-height: 1.85;
+            color: rgba(255, 251, 246, 0.65);
+            max-width: 380px;
+            margin-bottom: 2.5rem;
+        }
+
+        .ritual-duration {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255, 251, 246, 0.1);
+        }
+
+        .ritual-stat .rs-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--dorado);
+            display: block;
+            line-height: 1;
+        }
+
+        .ritual-stat .rs-label {
+            font-size: 0.65rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            color: rgba(255, 251, 246, 0.45);
+            text-transform: uppercase;
+        }
+
+        .ritual-stat-divider {
+            width: 1px;
+            height: 36px;
+            background: rgba(255, 251, 246, 0.1);
+        }
+
+        .btn-ritual {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--verde);
+            background-color: var(--dorado);
+            padding: 1rem 2.2rem;
+            border-radius: 2px;
+            text-decoration: none;
+            display: inline-block;
+            align-self: flex-start;
+            transition: background-color 0.3s;
+        }
+
+        .btn-ritual:hover {
+            background-color: #b8953d;
+        }
+
+        /* ── BLOG / ARTÍCULOS ── */
+        .section-blog {
+            padding: 7rem 8%;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+
+        .blog-card {
+            background-color: var(--beige);
+            overflow: hidden;
+            transition: transform 0.35s;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-card:hover .blog-img {
+            transform: scale(1.05);
+        }
+
+        .blog-img-wrap {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .blog-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .blog-body {
+            padding: 1.6rem 1.4rem 1.8rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .blog-date {
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--verde-salvia);
+            margin-bottom: 0.8rem;
+        }
+
+        .blog-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--verde);
+            line-height: 1.3;
+            margin-bottom: 0.8rem;
+            flex-grow: 1;
+        }
+
+        .blog-link {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--dorado);
+            margin-top: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: gap 0.25s;
+        }
+
+        .blog-card:hover .blog-link {
+            gap: 10px;
+        }
+
+        /* ── MARQUEE ── */
+        .marquee-wrap {
+            background-color: var(--dorado);
+            padding: 1rem 0;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .marquee-track {
+            display: inline-flex;
+            animation: marquee 22s linear infinite;
+        }
+
+        .marquee-item {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--verde);
+            padding: 0 2.5rem;
+        }
+
+        .marquee-dot {
+            color: var(--verde);
+            opacity: 0.4;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* ── FOOTER ── */
+        .footer {
+            background-color: var(--verde);
+            padding: 5rem 8% 3rem;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 4rem;
+            padding-bottom: 4rem;
+            border-bottom: 1px solid rgba(255, 251, 246, 0.08);
+        }
+
+        .footer-brand .fb-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--blanco);
+            letter-spacing: 4px;
+            display: block;
+        }
+
+        .footer-brand .fb-sub {
+            font-size: 0.58rem;
+            font-weight: 500;
+            letter-spacing: 5px;
+            color: var(--dorado);
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-brand p {
+            font-size: 0.82rem;
+            line-height: 1.75;
+            color: rgba(255, 251, 246, 0.55);
+            max-width: 300px;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-socials a {
+            width: 36px;
+            height: 36px;
+            border: 1px solid rgba(255, 251, 246, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            text-decoration: none;
+            color: rgba(255, 251, 246, 0.55);
+            transition: border-color 0.25s, color 0.25s;
+        }
+
+        .footer-socials a:hover {
+            border-color: var(--dorado);
+            color: var(--dorado);
+        }
+
+        .footer-col h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--dorado);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-col ul li a {
+            font-size: 0.83rem;
+            font-weight: 400;
+            color: rgba(255, 251, 246, 0.55);
+            text-decoration: none;
+            transition: color 0.25s;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--blanco);
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bottom p {
+            font-size: 0.72rem;
+            color: rgba(255, 251, 246, 0.3);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .hero-right {
+                height: 50vw;
+                min-height: 300px;
+            }
+
+            .hero-badge {
+                display: none;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .ritual-banner {
+                grid-template-columns: 1fr;
+            }
+
+            .ritual-img {
+                height: 280px;
+            }
+
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .nav-links {
+                display: none;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .trust-strip {
+                flex-direction: column;
+            }
+
+            .trust-item {
+                border-right: none;
+                border-bottom: 1px solid rgba(255, 251, 246, 0.08);
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .section-services,
+            .section-blog {
+                padding: 4rem 5%;
+            }
+
+            .hero-left {
+                padding: 4rem 5%;
+            }
+        }
+
+    header .nav-menu a:hover {
+    text-decoration: none;
+    color: #f0d28d;
+}
+
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav class="nav">
+        <a href="#" class="nav-logo" style="text-decoration: none;">
+            <span class="logo-main">LUMÉ</span>
+            <span class="logo-sub">Glow Studio</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Servicios</a></li>
+            <li><a href="#">Sobre nosotros</a></li>
+            <li><a href="#">Blog</a></li>
+        </ul>
+        <div class="nav-actions">
+            <a href="#"><img src="usuario1.png" alt="Usuario" width="80"></a>
+            <a href="#"><img src="compra1.png" class="icono-cesta" alt="Cesta" width="40"></a>
+            <a href="#" class="btn-reserva-nav">Reserva tu cita</a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-left">
+            <p class="hero-eyebrow">Centro de estética avanzada · Madrid</p>
+            <h1 class="hero-title">
+                Tu luz.<br>
+                <em>Nuestra</em><br>
+                pasión.
+            </h1>
+            <p class="hero-desc">Tratamientos personalizados con tecnología certificada para realzar tu belleza natural.
+                Porque cada piel tiene su propio ritual.</p>
+            <div class="hero-ctas">
+                <a href="#" class="btn-primary">Reservar cita</a>
+                <a href="#" class="btn-ghost">Explorar servicios <span>→</span></a>
+            </div>
+        </div>
+        <div class="hero-right">
+            <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=900&auto=format"
+                alt="Tratamiento facial en Lumé Glow Studio">
+            <div class="hero-badge">
+                <span class="badge-num">+1.200</span>
+                <span class="badge-label">Clientes felices</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- STRIP CONFIANZA -->
+    <div class="trust-strip">
+        <div class="trust-item">
+            <span class="t-num">+10</span>
+            <span class="t-label">años de experiencia</span>
+        </div>
+        <div class="trust-item">
+            <span class="t-num">+1.200</span>
+            <span class="t-label">clientes satisfechas</span>
+        </div>
+        <div class="trust-item">
+            <span class="t-num">100%</span>
+            <span class="t-label">atención personalizada</span>
+        </div>
+    </div>
+
+    <!-- SERVICIOS -->
+    <!-- SERVICIOS -->
+    <!-- SERVICIOS -->
+    <section class="section-services">
+        <div class="section-header">
+            <div>
+                <p class="section-label">Nuestros tratamientos</p>
+                <h2 class="section-title">Rituales diseñados<br><em>para ti</em></h2>
+            </div>
+            <a href="#" class="link-ver-todos">Ver todos →</a>
+        </div>
+        <div class="services-grid">
+    
+            <!-- Tratamiento 1: Facial -->
+            <a href="#" class="service-card">
+                <div class="service-icon">✦</div>
+                <h3 class="service-name">Limpieza facial premium</h3>
+                <p class="service-desc">Limpieza profunda con sérum, mascarilla personalizada y masaje facial para renovar
+                    tu piel.</p>
+                <div class="service-footer">
+                    <div class="service-price">75€ <span>Duración: 90 min</span></div>
+                    <span class="service-arrow">→</span>
+                </div>
+            </a>
+    
+            <!-- Tratamiento 2: Mirada (Cejas) -->
+            <a href="#" class="service-card">
+                <div class="service-icon">◈</div>
+                <h3 class="service-name">Laminado de cejas</h3>
+                <p class="service-desc">Incluye diseño, depilación e hidratación con keratina para lograr una mirada
+                    perfecta y definida.</p>
+                <div class="service-footer">
+                    <div class="service-price">45€ <span>Duración: 45 min</span></div>
+                    <span class="service-arrow">→</span>
+                </div>
+            </a>
+    
+            <!-- Tratamiento 3: Mirada (Pestañas) -->
+            <a href="#" class="service-card">
+                <div class="service-icon">◇</div>
+                <h3 class="service-name">Lifting de pestañas</h3>
+                <p class="service-desc">Elevación y curvado de pestañas naturales con tinte incluido para potenciar la
+                    expresión de tus ojos.</p>
+                <div class="service-footer">
+                    <div class="service-price">50€ <span>Duración: 60 min</span></div>
+                    <span class="service-arrow">→</span>
+                </div>
+            </a>
+    
+            <!-- Tratamiento 4: Manicura -->
+            <a href="#" class="service-card">
+                <div class="service-icon">❋</div>
+                <h3 class="service-name">Manicura</h3>
+                <p class="service-desc">Preparación completa de uña con esmaltado semipermanente de larga duración.</p>
+                <div class="service-footer">
+                    <div class="service-price">35€ <span>Duración: 60 min</span></div>
+                    <span class="service-arrow">→</span>
+                </div>
+            </a>
+    
+            <!-- Tratamiento 5: Pedicura -->
+            <a href="#" class="service-card">
+                <div class="service-icon">◉</div>
+                <h3 class="service-name">Pedicura</h3>
+                <p class="service-desc">Tratamiento completo con exfoliación, hidratación y esmaltado semipermanente.</p>
+                <div class="service-footer">
+                    <div class="service-price">45€ <span>Duración: 75 min</span></div>
+                    <span class="service-arrow">→</span>
+                </div>
+            </a>
+
+            <a href="#" class="service-card">
+                <div class="service-icon">✧</div>
+                <h3 class="service-name">Maderoterapia</h3>
+                <p class="service-desc">Tratamiento corporal con instrumentos de madera para modelar la figura y drenar líquidos.</p>
+                <div class="service-footer">
+                    <div class="service-price">65€ <span>Duración: 60 min</span></div>
+                    <span class="service-arrow">→</span>
+                </div>
+            </a>
+    
+        </div>
+    </section>
+    <!-- RITUAL DESTACADO -->
+    <section class="ritual-banner">
+        <div class="ritual-img">
+            <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=900&auto=format"
+                alt="Ritual Lumé Signature">
+        </div>
+        <div class="ritual-content">
+            <p class="ritual-eyebrow">Tratamiento estrella</p>
+            <h2 class="ritual-title">Ritual Lumé<br>Signature Glow</h2>
+            <p class="ritual-desc">Nuestra experiencia más completa. Limpieza profunda, hidratación intensiva y masaje
+                facial con técnicas orientales para una luminosidad inmediata.</p>
+            <div class="ritual-duration">
+                <div class="ritual-stat">
+                    <span class="rs-num">90'</span>
+                    <span class="rs-label">duración</span>
+                </div>
+                <div class="ritual-stat-divider"></div>
+                <div class="ritual-stat">
+                    <span class="rs-num">135€</span>
+                    <span class="rs-label">precio</span>
+                </div>
+                <div class="ritual-stat-divider"></div>
+                <div class="ritual-stat">
+                    <span class="rs-num">★ 4.9</span>
+                    <span class="rs-label">valoración</span>
+                </div>
+            </div>
+            <a href="#" class="btn-ritual">Reservar ahora</a>
+        </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee-wrap" aria-hidden="true">
+        <div class="marquee-track">
+            <span class="marquee-item">Bienestar Natural</span><span class="marquee-dot">·</span>
+            <span class="marquee-item">Belleza Consciente</span><span class="marquee-dot">·</span>
+            <span class="marquee-item">Atención Personalizada</span><span class="marquee-dot">·</span>
+            <span class="marquee-item">Resultados que Iluminan</span><span class="marquee-dot">·</span>
+            <span class="marquee-item">Bienestar Natural</span><span class="marquee-dot">·</span>
+            <span class="marquee-item">Belleza Consciente</span><span class="marquee-dot">·</span>
+            <span class="marquee-item">Atención Personalizada</span><span class="marquee-dot">·</span>
+            <span class="marquee-item">Resultados que Iluminan</span><span class="marquee-dot">·</span>
+        </div>
+    </div>
+
+    <!-- BLOG -->
+    <section class="section-blog">
+        <div class="section-header">
+            <div>
+                <p class="section-label">Consejos & tendencias</p>
+                <h2 class="section-title">Descubre nuestro<br><em>Blog</em></h2>
+            </div>
+            <a href="#" class="link-ver-todos">Ver todos →</a>
+        </div>
+        <div class="blog-grid">
+    
+            <a href="#" class="blog-card">
+                <div class="blog-img-wrap">
+                    <img class="blog-img"
+                        src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=500&auto=format"
+                        alt="Limpieza facial">
+                </div>
+                <div class="blog-body">
+                    <span class="blog-date">Cuidado Facial</span>
+                    <h3 class="blog-title">Cómo cuidar la piel después de una limpieza facial</h3>
+                    <span class="blog-link">Leer más →</span>
+                </div>
+            </a>
+    
+            <a href="#" class="blog-card">
+                <div class="blog-img-wrap">
+                    <img class="blog-img"
+                        src="https://images.unsplash.com/photo-1583001931096-959e9a1a6223?q=80&w=500&auto=format"
+                        alt="Lifting de pestañas">
+                </div>
+                <div class="blog-body">
+                    <span class="blog-date">Mirada</span>
+                    <h3 class="blog-title">Beneficios del lifting de pestañas para una mirada natural</h3>
+                    <span class="blog-link">Leer más →</span>
+                </div>
+            </a>
+    
+            <a href="#" class="blog-card">
+                <div class="blog-img-wrap">
+                    <img class="blog-img"
+                        src="https://images.unsplash.com/photo-1620331311520-246422fd82f9?q=80&w=500&auto=format"
+                        alt="Laminado de cejas">
+                </div>
+                <div class="blog-body">
+                    <span class="blog-date">Cejas</span>
+                    <h3 class="blog-title">Diferencias entre laminado de cejas y diseño de cejas</h3>
+                    <span class="blog-link">Leer más →</span>
+                </div>
+            </a>
+    
+            <a href="#" class="blog-card">
+                <div class="blog-img-wrap">
+                    <img class="blog-img"
+                        src="https://images.unsplash.com/photo-1552693673-1bf958298935?q=80&w=500&auto=format"
+                        alt="Hábitos de autocuidado">
+                </div>
+                <div class="blog-body">
+                    <span class="blog-date">Bienestar</span>
+                    <h3 class="blog-title">Hábitos de autocuidado para mejorar la salud de tu piel</h3>
+                    <span class="blog-link">Leer más →</span>
+                </div>
+            </a>
+    
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <span class="fb-logo">LUMÉ</span>
+                <span class="fb-sub">Glow Studio</span>
+                <p>Excelencia en estética y belleza con tratamientos faciales, corporales y antiedad. Atención
+                    personalizada de vanguardia en Madrid.</p>
+                    <div class="footer-socials">
+                        <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                        <a href="#" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+            </div>
+            <div class="footer-col">
+                <h4>Menú</h4>
+                <ul>
+                    <li><a href="#">Faciales</a></li>
+                    <li><a href="#">Corporales</a></li>
+                    <li><a href="#">Medicina Estética</a></li>
+                    <li><a href="#">Tienda</a></li>
+                    <li><a href="#">Sobre Nosotros</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Aviso legal</a></li>
+                    <li><a href="#">Política de privacidad</a></li>
+                    <li><a href="#">Condiciones generales</a></li>
+                    <li><a href="#">Política de cookies</a></li>
+                    <li><a href="#">Formulario de desistimiento</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Lumé Glow Studio. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+</html>
