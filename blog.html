@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Lumé Glow Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --verde: #2F4A3C;
+            --verde-salvia: #6F7F68;
+            --dorado: #C8A963;
+            --dorado-hover: #b8953d;
+            --beige: #EDE5D6;
+            --beige-claro: #F7F4EB;
+            --blanco: #FFFBF6;
+            --beige-blog: #EBE5D9;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--beige-claro);
+            font-family: 'Montserrat', sans-serif;
+            color: var(--verde);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── NAV (Intacto) ── */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: var(--verde);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            height: 72px;
+        }
+
+        .nav-logo {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+            text-decoration: none;
+        }
+
+        .nav-logo .logo-main {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--blanco);
+            letter-spacing: 4px;
+        }
+
+        .nav-logo .logo-sub {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.58rem;
+            font-weight: 500;
+            letter-spacing: 5px;
+            color: var(--dorado);
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: rgba(255, 251, 246, 0.75);
+            text-decoration: none;
+            transition: color 0.25s;
+        }
+
+        .nav-links a:hover {
+            color: var(--dorado);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .nav-actions a {
+            color: rgba(255, 251, 246, 0.75);
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: color 0.25s;
+        }
+
+        .nav-actions a:hover {
+            color: var(--dorado);
+        }
+
+        .btn-reserva-nav {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--verde) !important;
+            background-color: var(--dorado);
+            padding: 0.6rem 1.4rem;
+            border-radius: 2px;
+            text-decoration: none;
+            transition: background-color 0.25s;
+        }
+
+        .btn-reserva-nav:hover {
+            background-color: var(--dorado-hover);
+            color: var(--verde) !important;
+        }
+
+        /* ── HERO DEL BLOG (NUEVO DISEÑO CON IMAGEN DE FONDO) ── */
+        .blog-hero {
+            /* Fallback color por si tarda en cargar la imagen */
+            background-color: var(--beige-blog);
+
+            /* TRUCO CLAVE: Tu imagen generada como fondo de toda la sección */
+            background-image: url('fondo.png');
+            background-size: cover;
+            background-position: center right;
+            /* Mantiene el jarrón visible a la derecha */
+            background-repeat: no-repeat;
+
+            display: flex;
+            align-items: center;
+
+            /* Más padding vertical para que se vea bien la imagen */
+            padding: 6rem 8% 6rem 8%;
+            min-height: 420px;
+        }
+
+        .blog-hero-content {
+            max-width: 550px;
+            /* Se ha quitado el padding-bottom porque ahora lo controla el contenedor principal */
+        }
+
+        .blog-eyebrow {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--dorado);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .blog-eyebrow::before {
+            content: '';
+            display: inline-block;
+            width: 32px;
+            height: 1px;
+            background: var(--dorado);
+        }
+
+        .blog-hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 4vw, 4.5rem);
+            font-weight: 300;
+            line-height: 1.1;
+            color: var(--verde);
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-hero-title em {
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .blog-hero-desc {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--verde);
+            opacity: 0.8;
+            max-width: 480px;
+        }
+
+        /* ── FILTROS DEL BLOG ── */
+        .blog-filter-bar {
+            border-bottom: 1px solid rgba(47, 74, 60, 0.15);
+            padding: 0 8%;
+        }
+
+        .blog-filters {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+            padding: 1.5rem 0;
+            overflow-x: auto;
+        }
+
+        .blog-filters a {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--verde);
+            text-decoration: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .blog-filters a.active {
+            background-color: var(--verde);
+            color: var(--blanco);
+        }
+
+        .blog-filters a:hover:not(.active) {
+            background-color: rgba(47, 74, 60, 0.08);
+        }
+
+        /* ── GRID DE TARJETAS ── */
+        .section-blog {
+            padding: 5rem 8% 7rem 8%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .blog-card {
+            background-color: transparent;
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.3s;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-img-wrap {
+            height: 220px;
+            overflow: hidden;
+            margin-bottom: 1.2rem;
+        }
+
+        .blog-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .blog-card:hover .blog-img {
+            transform: scale(1.05);
+        }
+
+        .blog-body {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .blog-date {
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--dorado);
+            margin-bottom: 0.8rem;
+        }
+
+        .blog-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--verde);
+            line-height: 1.25;
+            margin-bottom: 1rem;
+        }
+
+        .blog-desc {
+            font-size: 0.8rem;
+            line-height: 1.7;
+            color: var(--verde);
+            opacity: 0.75;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .blog-link {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--verde);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: gap 0.25s, color 0.25s;
+        }
+
+        .blog-card:hover .blog-link {
+            gap: 10px;
+            color: var(--dorado);
+        }
+
+        /* ── BOTÓN VER TODOS ── */
+        .blog-load-more {
+            display: flex;
+            justify-content: center;
+            margin-top: 4rem;
+        }
+
+        .btn-outline {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--verde);
+            border: 1px solid var(--dorado);
+            padding: 1rem 3rem;
+            background: transparent;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--dorado);
+            color: var(--blanco);
+        }
+
+        /* ── FOOTER (Intacto) ── */
+        .footer {
+            background-color: var(--verde);
+            padding: 5rem 8% 3rem;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 4rem;
+            padding-bottom: 4rem;
+            border-bottom: 1px solid rgba(255, 251, 246, 0.08);
+        }
+
+        .footer-brand .fb-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--blanco);
+            letter-spacing: 4px;
+            display: block;
+        }
+
+        .footer-brand .fb-sub {
+            font-size: 0.58rem;
+            font-weight: 500;
+            letter-spacing: 5px;
+            color: var(--dorado);
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-brand p {
+            font-size: 0.82rem;
+            line-height: 1.75;
+            color: rgba(255, 251, 246, 0.55);
+            max-width: 300px;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-socials a {
+            width: 36px;
+            height: 36px;
+            border: 1px solid rgba(255, 251, 246, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            text-decoration: none;
+            color: rgba(255, 251, 246, 0.55);
+            transition: border-color 0.25s, color 0.25s;
+        }
+
+        .footer-socials a:hover {
+            border-color: var(--dorado);
+            color: var(--dorado);
+        }
+
+        .footer-col h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--dorado);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-col ul li a {
+            font-size: 0.83rem;
+            font-weight: 400;
+            color: rgba(255, 251, 246, 0.55);
+            text-decoration: none;
+            transition: color 0.25s;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--blanco);
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bottom p {
+            font-size: 0.72rem;
+            color: rgba(255, 251, 246, 0.3);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 1024px) {
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .blog-hero {
+                padding: 4rem 5%;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .blog-hero {
+                flex-direction: column;
+                text-align: left;
+                /* En móvil oscurecemos un poquito el fondo por si el texto pisa el jarrón */
+                background-position: center center;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .blog-filters {
+                padding-bottom: 1rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="nav">
+        <a href="#" class="nav-logo" style="text-decoration: none;">
+            <span class="logo-main">LUMÉ</span>
+            <span class="logo-sub">Glow Studio</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
+            <li><a href="blog.html">Blog</a></li>
+        </ul>
+        <div class="nav-actions">
+            <a href="login.html"><img src="usuario1.png" alt="Usuario" width="80"></a>
+            <a href="login.html"><img src="compra1.png" class="icono-cesta" alt="Cesta" width="40"></a>
+            <a href="login.html" class="btn-reserva-nav">Reserva tu cita</a>
+        </div>
+    </nav>
+
+    <!-- CABECERA ACTUALIZADA: La imagen ya no es una etiqueta, es el fondo -->
+    <header class="blog-hero">
+        <div class="blog-hero-content">
+            <span class="blog-eyebrow">Blog Lumé Glow Studio</span>
+            <h1 class="blog-hero-title">Consejos, bienestar<br><em>y belleza consciente</em></h1>
+            <p class="blog-hero-desc">Te compartimos recomendaciones, tendencias y todo lo que necesitas saber para
+                cuidar tu piel, tu mirada y tu bienestar.</p>
+        </div>
+    </header>
+
+    <div class="blog-filter-bar">
+        <ul class="blog-filters">
+            <li><a href="#" class="active">TODOS</a></li>
+            <li><a href="#">CUIDADO FACIAL</a></li>
+            <li><a href="#">MIRADA</a></li>
+            <li><a href="#">CEJAS</a></li>
+            <li><a href="#">BIENESTAR</a></li>
+            <li><a href="#">TRATAMIENTOS</a></li>
+        </ul>
+    </div>
+
+    <section class="section-blog">
+        <div class="blog-grid">
+
+            <a href="#" class="blog-card">
+                <div class="blog-img-wrap">
+                    <img class="blog-img" src="esteticista.jpg" alt="Limpieza facial">
+                </div>
+                <div class="blog-body">
+                    <span class="blog-date">Cuidado Facial</span>
+                    <h3 class="blog-title">Cómo cuidar la piel después de una limpieza facial</h3>
+                    <p class="blog-desc">Conoce los cuidados recomendados para prolongar los resultados de una limpieza
+                        facial y mantener una piel sana, hidratada y luminosa.</p>
+                    <span class="blog-link">Leer más →</span>
+                </div>
+            </a>
+
+            <a href="#" class="blog-card">
+                <div class="blog-img-wrap">
+                    <img class="blog-img" src="lifting-pestanas-crema.jpg" alt="Lifting de pestañas">
+                </div>
+                <div class="blog-body">
+                    <span class="blog-date">Mirada</span>
+                    <h3 class="blog-title">Beneficios del lifting de pestañas para una mirada natural</h3>
+                    <p class="blog-desc">Descubre por qué este tratamiento se ha convertido en una de las opciones más
+                        demandadas para realzar la mirada de forma natural y sin mantenimiento diario.</p>
+                    <span class="blog-link">Leer más →</span>
+                </div>
+            </a>
+
+            <a href="#" class="blog-card">
+                <div class="blog-img-wrap">
+                    <img class="blog-img" src="laminado-de-cejas-como-se-hace.jpg" alt="Laminado de cejas">
+                </div>
+                <div class="blog-body">
+                    <span class="blog-date">Cejas</span>
+                    <h3 class="blog-title">Diferencias entre laminado de cejas y diseño de cejas</h3>
+                    <p class="blog-desc">Te explicamos las principales características de cada tratamiento para ayudarte
+                        a elegir la opción que mejor se adapte a tus necesidades.</p>
+                    <span class="blog-link">Leer más →</span>
+                </div>
+            </a>
+
+            <a href="#" class="blog-card">
+                <div class="blog-img-wrap">
+                    <img class="blog-img" src="blog4.jpeg" alt="Hábitos de autocuidado">
+                </div>
+                <div class="blog-body">
+                    <span class="blog-date">Bienestar</span>
+                    <h3 class="blog-title">Hábitos de autocuidado para mejorar la salud de tu piel</h3>
+                    <p class="blog-desc">Pequeñas rutinas diarias que pueden ayudarte a mejorar el aspecto de tu piel y
+                        complementar los tratamientos realizados en la clínica.</p>
+                    <span class="blog-link">Leer más →</span>
+                </div>
+            </a>
+
+        </div>
+
+        <div class="blog-load-more">
+            <a href="#" class="btn-outline">Ver todos los artículos</a>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <span class="fb-logo">LUMÉ</span>
+                <span class="fb-sub">Glow Studio</span>
+                <p>Excelencia en estética y belleza con tratamientos faciales, corporales y antiedad. Atención
+                    personalizada de vanguardia en Madrid.</p>
+                <div class="footer-socials">
+                    <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Menú</h4>
+                <ul>
+                    <li><a href="#">Faciales</a></li>
+                    <li><a href="#">Corporales</a></li>
+                    <li><a href="#">Medicina Estética</a></li>
+                    <li><a href="login.html">Tienda</a></li>
+                    <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Aviso legal</a></li>
+                    <li><a href="#">Política de privacidad</a></li>
+                    <li><a href="#">Condiciones generales</a></li>
+                    <li><a href="#">Política de cookies</a></li>
+                    <li><a href="#">Formulario de desistimiento</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Lumé Glow Studio. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+</body>
+
+</html>

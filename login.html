@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Lumé Glow Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --verde: #2F4A3C;
+            --verde-salvia: #6F7F68;
+            --dorado: #C8A963;
+            --dorado-hover: #b8953d;
+            --beige: #EDE5D6;
+            --beige-claro: #F7F4EB;
+            --blanco: #FFFBF6;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--beige-claro);
+            font-family: 'Montserrat', sans-serif;
+            color: var(--verde);
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* ── NAV (Intacto) ── */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: var(--verde);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            height: 72px;
+        }
+
+        .nav-logo {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+            text-decoration: none;
+        }
+
+        .nav-logo .logo-main {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--blanco);
+            letter-spacing: 4px;
+        }
+
+        .nav-logo .logo-sub {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.58rem;
+            font-weight: 500;
+            letter-spacing: 5px;
+            color: var(--dorado);
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: rgba(255, 251, 246, 0.75);
+            text-decoration: none;
+            transition: color 0.25s;
+        }
+
+        .nav-links a:hover {
+            color: var(--dorado);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .nav-actions a {
+            color: rgba(255, 251, 246, 0.75);
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: color 0.25s;
+        }
+
+        .nav-actions a:hover {
+            color: var(--dorado);
+        }
+
+        .btn-reserva-nav {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--verde) !important;
+            background-color: var(--dorado);
+            padding: 0.6rem 1.4rem;
+            border-radius: 2px;
+            text-decoration: none;
+            transition: background-color 0.25s;
+        }
+
+        .btn-reserva-nav:hover {
+            background-color: var(--dorado-hover);
+            color: var(--verde) !important;
+        }
+
+        /* ── SECCIÓN AUTH / LOGIN ── */
+        .auth-section {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem 5%;
+        }
+
+        .auth-container {
+            display: flex;
+            background-color: var(--blanco);
+            width: 100%;
+            max-width: 1000px;
+            min-height: 600px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(47, 74, 60, 0.08);
+        }
+
+        /* Lado Izquierdo: Imagen */
+        .auth-image {
+            width: 50%;
+            position: relative;
+        }
+
+        .auth-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Lado Derecho: Formulario */
+        .auth-content {
+            width: 50%;
+            padding: 4rem 5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .auth-eyebrow {
+            font-size: 0.65rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--dorado);
+            margin-bottom: 1rem;
+        }
+
+        .auth-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 400;
+            color: var(--verde);
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+        }
+
+        .auth-desc {
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: var(--verde);
+            opacity: 0.7;
+            margin-bottom: 3rem;
+        }
+
+        /* Estilos del Formulario */
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--verde);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            color: var(--verde);
+            padding: 0.8rem 0;
+            background: transparent;
+            border: none;
+            /* Línea inferior fina para un look minimalista y premium */
+            border-bottom: 1px solid rgba(47, 74, 60, 0.2);
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input::placeholder {
+            color: rgba(47, 74, 60, 0.3);
+        }
+
+        .form-group input:focus {
+            border-bottom-color: var(--dorado);
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-options label {
+            font-size: 0.75rem;
+            color: var(--verde);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .form-options a {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--dorado);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .form-options a:hover {
+            color: var(--verde);
+        }
+
+        .btn-auth {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--blanco);
+            background-color: var(--verde);
+            padding: 1.2rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn-auth:hover {
+            background-color: var(--dorado);
+            transform: translateY(-2px);
+        }
+
+        .auth-switch {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 0.8rem;
+            color: var(--verde);
+        }
+
+        .auth-switch a {
+            color: var(--dorado);
+            font-weight: 600;
+            text-decoration: none;
+            margin-left: 5px;
+            transition: color 0.3s;
+        }
+
+        .auth-switch a:hover {
+            color: var(--verde);
+        }
+
+        /* ── FOOTER (Intacto) ── */
+        .footer {
+            background-color: var(--verde);
+            padding: 5rem 8% 3rem;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 4rem;
+            padding-bottom: 4rem;
+            border-bottom: 1px solid rgba(255, 251, 246, 0.08);
+        }
+
+        .footer-brand .fb-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--blanco);
+            letter-spacing: 4px;
+            display: block;
+        }
+
+        .footer-brand .fb-sub {
+            font-size: 0.58rem;
+            font-weight: 500;
+            letter-spacing: 5px;
+            color: var(--dorado);
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-brand p {
+            font-size: 0.82rem;
+            line-height: 1.75;
+            color: rgba(255, 251, 246, 0.55);
+            max-width: 300px;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-socials a {
+            width: 36px;
+            height: 36px;
+            border: 1px solid rgba(255, 251, 246, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            text-decoration: none;
+            color: rgba(255, 251, 246, 0.55);
+            transition: border-color 0.25s, color 0.25s;
+        }
+
+        .footer-socials a:hover {
+            border-color: var(--dorado);
+            color: var(--dorado);
+        }
+
+        .footer-col h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--dorado);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-col ul li a {
+            font-size: 0.83rem;
+            font-weight: 400;
+            color: rgba(255, 251, 246, 0.55);
+            text-decoration: none;
+            transition: color 0.25s;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--blanco);
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bottom p {
+            font-size: 0.72rem;
+            color: rgba(255, 251, 246, 0.3);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            .auth-image {
+                display: none;
+                /* Ocultar foto en móvil */
+            }
+
+            .auth-content {
+                width: 100%;
+                padding: 4rem 3rem;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .nav-links {
+                display: none;
+            }
+
+            .auth-content {
+                padding: 3rem 1.5rem;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav class="nav">
+        <a href="index.html" class="nav-logo" style="text-decoration: none;">
+            <span class="logo-main">LUMÉ</span>
+            <span class="logo-sub">Glow Studio</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
+            <li><a href="blog.html">Blog</a></li>
+        </ul>
+        <div class="nav-actions">
+            <a href="login.html"><img src="usuario1.png" alt="Usuario" width="80"></a>
+            <a href="login.html"><img src="compra1.png" class="icono-cesta" alt="Cesta" width="40"></a>
+            <a href="login.html" class="btn-reserva-nav">Reserva tu cita</a>
+        </div>
+    </nav>
+
+    <!-- ZONA CENTRAL DE LOGIN -->
+    <main class="auth-section">
+        <div class="auth-container">
+
+            <!-- Foto Izquierda -->
+            <div class="auth-image">
+                <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=800&auto=format"
+                    alt="Spa relajante Lumé">
+            </div>
+
+            <!-- Formulario Derecha -->
+            <div class="auth-content">
+                <span class="auth-eyebrow">Área de Clientes</span>
+                <h1 class="auth-title">Bienvenida</h1>
+                <p class="auth-desc">Inicia sesión o regístrate para gestionar tus citas, compras y tratamientos.</p>
+
+                <form class="auth-form" action="#" method="POST">
+
+                    <div class="form-group">
+                        <label for="email">Correo electrónico</label>
+                        <!-- type="email" asegura que pongan el @ -->
+                        <input type="email" id="email" placeholder="tu@correo.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Contraseña</label>
+                        <!-- EL TRUCO CLAVE: type="password" oculta las letras automáticamente -->
+                        <input type="password" id="password" placeholder="••••••••" required>
+                    </div>
+
+                    <div class="form-options">
+                        <label>
+                            <input type="checkbox"> Recordar mi cuenta
+                        </label>
+                        <a href="#">¿Olvidaste tu contraseña?</a>
+                    </div>
+
+                    <button type="submit" class="btn-auth">Acceder</button>
+
+                </form>
+
+                <!-- Botón simulado para cambiar a registro -->
+                <div class="auth-switch">
+                    <p>¿No tienes cuenta? <a href="#">Regístrate aquí</a></p>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <span class="fb-logo">LUMÉ</span>
+                <span class="fb-sub">Glow Studio</span>
+                <p>Excelencia en estética y belleza con tratamientos faciales, corporales y antiedad. Atención
+                    personalizada de vanguardia en Madrid.</p>
+                <div class="footer-socials">
+                    <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Menú</h4>
+                <ul>
+                    <li><a href="#">Faciales</a></li>
+                    <li><a href="#">Corporales</a></li>
+                    <li><a href="#">Medicina Estética</a></li>
+                    <li><a href="#">Tienda</a></li>
+                    <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Aviso legal</a></li>
+                    <li><a href="#">Política de privacidad</a></li>
+                    <li><a href="#">Condiciones generales</a></li>
+                    <li><a href="#">Política de cookies</a></li>
+                    <li><a href="#">Formulario de desistimiento</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Lumé Glow Studio. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

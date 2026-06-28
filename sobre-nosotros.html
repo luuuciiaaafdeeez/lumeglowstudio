@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre Nosotros - Lumé Glow Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --verde: #2F4A3C;
+            --verde-salvia: #6F7F68;
+            --dorado: #C8A963;
+            --dorado-hover: #b8953d;
+            --beige: #EDE5D6;
+            --beige-claro: #F7F4EB;
+            --blanco: #FFFBF6;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--beige-claro);
+            font-family: 'Montserrat', sans-serif;
+            color: var(--verde);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── NAV (Intacto) ── */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: var(--verde);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            height: 72px;
+        }
+
+        .nav-logo {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+            text-decoration: none;
+        }
+
+        .nav-logo .logo-main {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--blanco);
+            letter-spacing: 4px;
+        }
+
+        .nav-logo .logo-sub {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.58rem;
+            font-weight: 500;
+            letter-spacing: 5px;
+            color: var(--dorado);
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: rgba(255, 251, 246, 0.75);
+            text-decoration: none;
+            transition: color 0.25s;
+        }
+
+        .nav-links a:hover {
+            color: var(--dorado);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .nav-actions a {
+            color: rgba(255, 251, 246, 0.75);
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: color 0.25s;
+        }
+
+        .nav-actions a:hover {
+            color: var(--dorado);
+        }
+
+        .btn-reserva-nav {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--verde) !important;
+            background-color: var(--dorado);
+            padding: 0.6rem 1.4rem;
+            border-radius: 2px;
+            text-decoration: none;
+            transition: background-color 0.25s;
+        }
+
+        .btn-reserva-nav:hover {
+            background-color: var(--dorado-hover);
+            color: var(--verde) !important;
+        }
+
+        /* ── HERO SOBRE NOSOTROS ── */
+        .about-hero {
+            padding: 6rem 5% 4rem;
+            text-align: center;
+            background-color: var(--blanco);
+        }
+
+        .about-eyebrow {
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--dorado);
+            margin-bottom: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .about-eyebrow::before,
+        .about-eyebrow::after {
+            content: '';
+            display: inline-block;
+            width: 30px;
+            height: 1px;
+            background: var(--dorado);
+        }
+
+        .about-hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.8rem, 4vw, 4rem);
+            font-weight: 400;
+            color: var(--verde);
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.2;
+        }
+
+        .about-hero p {
+            font-size: 1.05rem;
+            color: var(--verde);
+            opacity: 0.85;
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* ── SECCIÓN HISTORIA / MISIÓN ── */
+        .about-story {
+            display: flex;
+            align-items: center;
+            max-width: 1200px;
+            margin: 5rem auto;
+            padding: 0 5%;
+            gap: 5rem;
+        }
+
+        .story-image {
+            flex: 1;
+            position: relative;
+        }
+
+        .story-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 15px 40px rgba(47, 74, 60, 0.08);
+        }
+
+        /* Elemento decorativo detrás de la imagen */
+        .story-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100%;
+            height: 100%;
+            border: 1px solid var(--dorado);
+            border-radius: 8px;
+            z-index: -1;
+        }
+
+        .story-content {
+            flex: 1;
+        }
+
+        .story-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--verde);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .story-content p {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            color: var(--verde);
+            opacity: 0.8;
+            margin-bottom: 1.5rem;
+        }
+
+        /* ── NUESTRA FILOSOFÍA (VALORES) ── */
+        .philosophy-section {
+            background-color: var(--beige); /* Cambiado a Beige para separar del footer */
+            color: var(--verde);
+            padding: 6rem 5%;
+            margin-top: 5rem;
+        }
+
+        .philosophy-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .philosophy-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--verde); /* Título en verde oscuro para que contraste */
+        }
+
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .philosophy-card {
+            text-align: center;
+            padding: 3rem 2rem;
+            background-color: var(--blanco); /* Tarjetas en blanco hueso */
+            border-radius: 12px; /* Bordes suaves */
+            border: 1px solid rgba(47, 74, 60, 0.05); /* Borde súper sutil */
+            box-shadow: 0 10px 30px rgba(47, 74, 60, 0.03); /* Sombra elegante */
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .philosophy-card:hover {
+            transform: translateY(-8px); /* Sube un poco más al pasar el ratón */
+            box-shadow: 0 15px 40px rgba(47, 74, 60, 0.08);
+            border-color: var(--dorado); /* El borde se vuelve dorado en hover */
+        }
+
+        .philosophy-icon {
+            font-size: 2.5rem;
+            color: var(--dorado);
+            margin-bottom: 1.5rem;
+        }
+
+        .philosophy-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--verde);
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .philosophy-text {
+            font-size: 0.85rem;
+            line-height: 1.7;
+            color: var(--verde);
+            opacity: 0.85;
+        }
+
+        /* ── FOOTER (Intacto) ── */
+        .footer {
+            background-color: var(--verde);
+            padding: 5rem 8% 3rem;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 4rem;
+            padding-bottom: 4rem;
+            border-bottom: 1px solid rgba(255, 251, 246, 0.08);
+        }
+
+        .footer-brand .fb-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--blanco);
+            letter-spacing: 4px;
+            display: block;
+        }
+
+        .footer-brand .fb-sub {
+            font-size: 0.58rem;
+            font-weight: 500;
+            letter-spacing: 5px;
+            color: var(--dorado);
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-brand p {
+            font-size: 0.82rem;
+            line-height: 1.75;
+            color: rgba(255, 251, 246, 0.55);
+            max-width: 300px;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-socials a {
+            width: 36px;
+            height: 36px;
+            border: 1px solid rgba(255, 251, 246, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            text-decoration: none;
+            color: rgba(255, 251, 246, 0.55);
+            transition: border-color 0.25s, color 0.25s;
+        }
+
+        .footer-socials a:hover {
+            border-color: var(--dorado);
+            color: var(--dorado);
+        }
+
+        .footer-col h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--dorado);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-col ul li a {
+            font-size: 0.83rem;
+            font-weight: 400;
+            color: rgba(255, 251, 246, 0.55);
+            text-decoration: none;
+            transition: color 0.25s;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--blanco);
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bottom p {
+            font-size: 0.72rem;
+            color: rgba(255, 251, 246, 0.3);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            .about-story {
+                flex-direction: column;
+                gap: 3rem;
+            }
+
+            .philosophy-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .story-image::before {
+                display: none;
+            }
+
+            /* Quitamos el borde decorativo en móvil */
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav class="nav">
+        <a href="index.html" class="nav-logo" style="text-decoration: none;">
+            <span class="logo-main">LUMÉ</span>
+            <span class="logo-sub">Glow Studio</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
+            <li><a href="blog.html">Blog</a></li>
+        </ul>
+        <div class="nav-actions">
+            <a href="login.html"><img src="usuario1.png" alt="Usuario" width="80"></a>
+            <a href="login.html"><img src="compra1.png" class="icono-cesta" alt="Cesta" width="40"></a>
+            <a href="lo" class="btn-reserva-nav">Reserva tu cita</a>
+        </div>
+    </nav>
+
+    <!-- INTRODUCCIÓN EMOCIONAL -->
+    <header class="about-hero">
+        <span class="about-eyebrow">Sobre Nosotros</span>
+        <h1>Tu bienestar es el inicio de tu verdadera belleza</h1>
+        <p>En Lumé Glow Studio creemos que la belleza comienza cuando te sientes bien contigo misma. Por eso hemos
+            creado un espacio donde la estética, el bienestar y el autocuidado se unen para ofrecerte una experiencia
+            única, pensada para que cada visita sea mucho más que un simple tratamiento.</p>
+    </header>
+
+    <!-- HISTORIA Y VISIÓN -->
+    <section class="about-story">
+        <div class="story-image">
+            <!-- Imagen sugerida de ambiente relajante/clínica moderna -->
+            <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=800&auto=format"
+                alt="Interior relajante de Lumé Glow Studio">
+        </div>
+        <div class="story-content">
+            <h2>Mucho más que una clínica estética</h2>
+            <p>Nuestro objetivo es realzar la belleza natural de cada persona mediante tratamientos personalizados, no
+                invasivos y adaptados estrictamente a tus necesidades. Apostamos por resultados sutiles y armónicos,
+                siempre desde la profesionalidad, la cercanía y el cuidado en cada detalle.</p>
+            <p>Queremos ser ese lugar en el que desconectes del ritmo diario, te dediques tiempo de calidad y salgas
+                sintiéndote más segura, relajada y feliz. Porque para nosotros, cuidarte no es un lujo, es una forma de
+                bienestar fundamental.</p>
+            <p><strong>En Lumé Glow Studio queremos que cada visita sea un momento para ti.</strong> Un espacio donde
+                sentirte cuidada, escuchada y acompañada, porque creemos firmemente que la verdadera belleza nace de la
+                confianza y el cuidado personal.</p>
+        </div>
+    </section>
+
+    <!-- PILARES DE LA FILOSOFÍA -->
+    <section class="philosophy-section">
+        <div class="philosophy-header">
+            <h2>Nuestra Filosofía</h2>
+        </div>
+        <div class="philosophy-grid">
+
+            <div class="philosophy-card">
+                <div class="philosophy-icon">
+                    <i class="fa-solid fa-leaf"></i>
+                </div>
+                <h3 class="philosophy-title">Belleza natural</h3>
+                <p class="philosophy-text">Realzamos tu belleza sin transformarla, respetando siempre tu esencia única y
+                    buscando resultados naturales, equilibrados y armónicos.</p>
+            </div>
+
+            <div class="philosophy-card">
+                <div class="philosophy-icon">
+                    <i class="fa-solid fa-spa"></i>
+                </div>
+                <h3 class="philosophy-title">Bienestar</h3>
+                <p class="philosophy-text">Cada tratamiento que ofrecemos está pensado cuidadosamente para que disfrutes
+                    de un verdadero momento de desconexión, relajación y cuidado personal profundo.</p>
+            </div>
+
+            <div class="philosophy-card">
+                <div class="philosophy-icon">
+                    <i class="fa-regular fa-face-smile"></i>
+                </div>
+                <h3 class="philosophy-title">Atención personalizada</h3>
+                <p class="philosophy-text">Cada piel y cada persona son diferentes. Por eso adaptamos rigurosamente cada
+                    tratamiento a tus necesidades específicas para ofrecerte una experiencia inigualable.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <span class="fb-logo">LUMÉ</span>
+                <span class="fb-sub">Glow Studio</span>
+                <p>Excelencia en estética y belleza con tratamientos faciales, corporales y antiedad. Atención
+                    personalizada de vanguardia en Madrid.</p>
+                <div class="footer-socials">
+                    <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Menú</h4>
+                <ul>
+                    <li><a href="#">Faciales</a></li>
+                    <li><a href="#">Corporales</a></li>
+                    <li><a href="#">Medicina Estética</a></li>
+                    <li><a href="login.html">Tienda</a></li>
+                    <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Aviso legal</a></li>
+                    <li><a href="#">Política de privacidad</a></li>
+                    <li><a href="#">Condiciones generales</a></li>
+                    <li><a href="#">Política de cookies</a></li>
+                    <li><a href="#">Formulario de desistimiento</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Lumé Glow Studio. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

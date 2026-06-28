@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios - Lumé Glow Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --verde: #2F4A3C;
+            --verde-salvia: #6F7F68;
+            --dorado: #C8A963;
+            --dorado-hover: #b8953d;
+            --beige: #EDE5D6;
+            --beige-claro: #F7F4EB;
+            --blanco: #FFFBF6;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--beige-claro);
+            font-family: 'Montserrat', sans-serif;
+            color: var(--verde);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ── NAV (Intacto) ── */
+        .nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: var(--verde);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 5%;
+            height: 72px;
+        }
+
+        .nav-logo {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+            text-decoration: none;
+        }
+
+        .nav-logo .logo-main {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--blanco);
+            letter-spacing: 4px;
+        }
+
+        .nav-logo .logo-sub {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.58rem;
+            font-weight: 500;
+            letter-spacing: 5px;
+            color: var(--dorado);
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: rgba(255, 251, 246, 0.75);
+            text-decoration: none;
+            transition: color 0.25s;
+        }
+
+        .nav-links a:hover {
+            color: var(--dorado);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .nav-actions a {
+            color: rgba(255, 251, 246, 0.75);
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: color 0.25s;
+        }
+
+        .nav-actions a:hover {
+            color: var(--dorado);
+        }
+
+        .btn-reserva-nav {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: var(--verde) !important;
+            background-color: var(--dorado);
+            padding: 0.6rem 1.4rem;
+            border-radius: 2px;
+            text-decoration: none;
+            transition: background-color 0.25s;
+        }
+
+        .btn-reserva-nav:hover {
+            background-color: var(--dorado-hover);
+            color: var(--verde) !important;
+        }
+
+        /* ── HERO SERVICIOS (Estilo Elegante) ── */
+        .services-hero {
+            padding: 6rem 5% 4rem;
+            text-align: center;
+            background-color: var(--blanco);
+            border-bottom: 1px solid rgba(47, 74, 60, 0.1);
+        }
+
+        .services-hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            font-weight: 400;
+            color: var(--verde);
+            margin-bottom: 1rem;
+        }
+
+        .services-hero p {
+            font-size: 1rem;
+            color: var(--verde-salvia);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* ── CATEGORÍAS DE SERVICIOS ── */
+        .service-category {
+            padding: 5rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .category-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .category-header h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 600;
+            color: var(--verde);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 1rem;
+        }
+
+        .category-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background-color: var(--dorado);
+        }
+
+        /* ── TARJETAS VISUALES INTERACTIVAS ── */
+        .visual-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .v-card {
+            position: relative;
+            height: 450px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(47, 74, 60, 0.08);
+            transform: translateZ(0);
+            /* Hardware acceleration */
+        }
+
+        /* Imagen de fondo */
+        .v-card-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        /* Capa oscurecedora (Degradado base -> Color sólido en hover) */
+        .v-card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(47, 74, 60, 0.9) 0%, rgba(47, 74, 60, 0.3) 50%, rgba(47, 74, 60, 0) 100%);
+            transition: background 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2.5rem 2rem;
+            color: var(--blanco);
+        }
+
+        /* Título del tratamiento */
+        .v-card-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 0;
+            transition: transform 0.5s ease;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Contenido Oculto (Se revela al pasar el ratón) */
+        .v-card-reveal {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease, margin 0.5s ease;
+        }
+
+        .v-card-desc {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 1.5rem;
+        }
+
+        .v-card-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(200, 169, 99, 0.4);
+            padding-top: 1rem;
+        }
+
+        .v-card-duration,
+        .v-card-price {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: var(--dorado);
+        }
+
+        .v-card-price {
+            font-size: 1.2rem;
+        }
+
+        .v-card-duration {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* ── ANIMACIONES HOVER ── */
+        .v-card:hover .v-card-img {
+            transform: scale(1.08);
+        }
+
+        .v-card:hover .v-card-overlay {
+            background: rgba(47, 74, 60, 0.92);
+            /* Fondo verde oscuro corporativo casi opaco */
+            justify-content: center;
+            /* Centra el contenido al revelar */
+        }
+
+        .v-card:hover .v-card-title {
+            margin-bottom: 1rem;
+            transform: translateY(-5px);
+            text-shadow: none;
+        }
+
+        .v-card:hover .v-card-reveal {
+            max-height: 250px;
+            /* Suficiente para mostrar el texto */
+            opacity: 1;
+        }
+
+        /* ── FOOTER (Intacto) ── */
+        .footer {
+            background-color: var(--verde);
+            padding: 5rem 8% 3rem;
+        }
+
+        .footer-top {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 4rem;
+            padding-bottom: 4rem;
+            border-bottom: 1px solid rgba(255, 251, 246, 0.08);
+        }
+
+        .footer-brand .fb-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--blanco);
+            letter-spacing: 4px;
+            display: block;
+        }
+
+        .footer-brand .fb-sub {
+            font-size: 0.58rem;
+            font-weight: 500;
+            letter-spacing: 5px;
+            color: var(--dorado);
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-brand p {
+            font-size: 0.82rem;
+            line-height: 1.75;
+            color: rgba(255, 251, 246, 0.55);
+            max-width: 300px;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-socials a {
+            width: 36px;
+            height: 36px;
+            border: 1px solid rgba(255, 251, 246, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            text-decoration: none;
+            color: rgba(255, 251, 246, 0.55);
+            transition: border-color 0.25s, color 0.25s;
+        }
+
+        .footer-socials a:hover {
+            border-color: var(--dorado);
+            color: var(--dorado);
+        }
+
+        .footer-col h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--dorado);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-col ul li a {
+            font-size: 0.83rem;
+            font-weight: 400;
+            color: rgba(255, 251, 246, 0.55);
+            text-decoration: none;
+            transition: color 0.25s;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--blanco);
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bottom p {
+            font-size: 0.72rem;
+            color: rgba(255, 251, 246, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .visual-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .v-card {
+                height: 350px;
+            }
+
+            .v-card-reveal {
+                /* En móvil siempre mostramos la info porque no hay ratón para hacer hover */
+                max-height: 250px;
+                opacity: 1;
+            }
+
+            .v-card-overlay {
+                background: rgba(47, 74, 60, 0.85);
+                justify-content: center;
+            }
+
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAV -->
+    <nav class="nav">
+        <a href="index.html" class="nav-logo" style="text-decoration: none;">
+            <span class="logo-main">LUMÉ</span>
+            <span class="logo-sub">Glow Studio</span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="servicios.html">Servicios</a></li>
+            <li><a href="sobre-nosotros.html">Sobre nosotros</a></li>
+            <li><a href="blog.html">Blog</a></li>
+        </ul>
+        <div class="nav-actions">
+            <a href="login.html"><img src="usuario1.png" alt="Usuario" width="80"></a>
+            <a href="login.html"><img src="compra1.png" class="icono-cesta" alt="Cesta" width="40"></a>
+            <a href="login.html" class="btn-reserva-nav">Reserva tu cita</a>
+        </div>
+    </nav>
+
+    <!-- HERO SERVICIOS -->
+    <header class="services-hero">
+        <h1>Nuestros Servicios</h1>
+        <p>Una colección de experiencias de belleza y bienestar diseñadas meticulosamente para realzar tu luz natural y
+            proporcionarte un momento de desconexión absoluta.</p>
+    </header>
+
+    <!-- SECCIÓN 1: FACIALES Y MIRADA -->
+    <section class="service-category">
+        <div class="category-header">
+            <h2>Faciales y Mirada</h2>
+        </div>
+        <div class="visual-grid">
+
+            <div class="v-card">
+                <img src="laminado_de_cejas.jpeg"
+                    alt="Laminado de cejas" class="v-card-img">
+                <div class="v-card-overlay">
+                    <h3 class="v-card-title">Laminado de cejas</h3>
+                    <div class="v-card-reveal">
+                        <p class="v-card-desc">Incluye diseño, depilación e hidratación con keratina para lograr unas
+                            cejas perfectas y definidas.</p>
+                        <div class="v-card-meta">
+                            <span class="v-card-duration"><i class="fa-regular fa-clock"></i> 45 min</span>
+                            <span class="v-card-price">45€</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="v-card">
+                <img src="lifting_de_pestanas.jpeg"
+                    alt="Lifting de pestañas" class="v-card-img">
+                <div class="v-card-overlay">
+                    <h3 class="v-card-title">Lifting de pestañas</h3>
+                    <div class="v-card-reveal">
+                        <p class="v-card-desc">Elevación y curvado de pestañas naturales con tinte incluido para
+                            potenciar la expresión de tu mirada.</p>
+                        <div class="v-card-meta">
+                            <span class="v-card-duration"><i class="fa-regular fa-clock"></i> 60 min</span>
+                            <span class="v-card-price">50€</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="v-card">
+                <img src="estfacial.jpg"
+                    alt="Limpieza facial básica" class="v-card-img">
+                <div class="v-card-overlay">
+                    <h3 class="v-card-title">Limpieza facial</h3>
+                    <div class="v-card-reveal">
+                        <p class="v-card-desc">Limpieza profunda, extracción e hidratación adaptada minuciosamente a tu
+                            tipo de piel.</p>
+                        <div class="v-card-meta">
+                            <span class="v-card-duration"><i class="fa-regular fa-clock"></i> 60 min</span>
+                            <span class="v-card-price">55€</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    </section>
+
+    <!-- SECCIÓN 2: MANICURA Y PEDICURA -->
+    <section class="service-category" style="background-color: var(--blanco);">
+        <div class="category-header">
+            <h2>Manicura y Pedicura</h2>
+        </div>
+        <div class="visual-grid">
+
+
+            <div class="v-card">
+                <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?q=80&w=600&auto=format"
+                    alt="Manicura semipermanente" class="v-card-img">
+                <div class="v-card-overlay">
+                    <h3 class="v-card-title">Manicura semipermanente</h3>
+                    <div class="v-card-reveal">
+                        <p class="v-card-desc">Preparación completa de uña con esmaltado semipermanente de larga
+                            duración y brillo extremo.</p>
+                        <div class="v-card-meta">
+                            <span class="v-card-duration"><i class="fa-regular fa-clock"></i> 60 min</span>
+                            <span class="v-card-price">35€</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="v-card">
+                <img src="R.jfif"
+                    alt="Pedicura completa" class="v-card-img">
+                <div class="v-card-overlay">
+                    <h3 class="v-card-title">Pedicura completa</h3>
+                    <div class="v-card-reveal">
+                        <p class="v-card-desc">Tratamiento de spa completo con exfoliación, hidratación profunda y
+                            esmaltado semipermanente.</p>
+                        <div class="v-card-meta">
+                            <span class="v-card-duration"><i class="fa-regular fa-clock"></i> 75 min</span>
+                            <span class="v-card-price">45€</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECCIÓN 3: CORPORALES -->
+    <section class="service-category">
+        <div class="category-header">
+            <h2>Servicios Corporales</h2>
+        </div>
+        <div class="visual-grid">
+
+            <div class="v-card">
+                <img src="maderoterapia.jpeg"
+                    alt="Maderoterapia" class="v-card-img">
+                <div class="v-card-overlay">
+                    <h3 class="v-card-title">Maderoterapia</h3>
+                    <div class="v-card-reveal">
+                        <p class="v-card-desc">Tratamiento corporal holístico con instrumentos de madera natural para
+                            modelar la figura y drenar líquidos.</p>
+                        <div class="v-card-meta">
+                            <span class="v-card-duration"><i class="fa-regular fa-clock"></i> 60 min</span>
+                            <span class="v-card-price">65€</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="v-card">
+                <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=600&auto=format"
+                    alt="Maderoterapia + Masaje" class="v-card-img">
+                <div class="v-card-overlay">
+                    <h3 class="v-card-title">Maderoterapia + Relax</h3>
+                    <div class="v-card-reveal">
+                        <p class="v-card-desc">Sesión combinada de maderoterapia activa y un masaje de relajación
+                            profunda para equilibrar cuerpo y mente.</p>
+                        <div class="v-card-meta">
+                            <span class="v-card-duration"><i class="fa-regular fa-clock"></i> 90 min</span>
+                            <span class="v-card-price">85€</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <span class="fb-logo">LUMÉ</span>
+                <span class="fb-sub">Glow Studio</span>
+                <p>Excelencia en estética y belleza con tratamientos faciales, corporales y antiedad. Atención
+                    personalizada de vanguardia en Madrid.</p>
+                <div class="footer-socials">
+                    <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" title="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Menú</h4>
+                <ul>
+                    <li><a href="#">Faciales</a></li>
+                    <li><a href="#">Corporales</a></li>
+                    <li><a href="#">Medicina Estética</a></li>
+                    <li><a href="login.html">Tienda</a></li>
+                    <li><a href="sobre-nosotros.html">Sobre Nosotros</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Aviso legal</a></li>
+                    <li><a href="#">Política de privacidad</a></li>
+                    <li><a href="#">Condiciones generales</a></li>
+                    <li><a href="#">Política de cookies</a></li>
+                    <li><a href="#">Formulario de desistimiento</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Lumé Glow Studio. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
